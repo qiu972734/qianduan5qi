@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
-    <?php include("./html/common/style.html")?>
+    <?php include("../common/style.html")?>
 </head>
 <body>
-    <?php include("./html/common/aside.html")?>
-
+    
+   <?php include("../common/aside.html")?>
     <!-- 主体 -->
     <div class="main">
         <div class="container-fluid">
@@ -46,46 +46,35 @@
                     </ul>
                 </nav>          
             </div>
-            <!-- 个人资料 -->
-            <div class="body teacher-profile">
-                <div class="profile">
-                    <div class="row survey">
-                        <div class="col-xs-3">
-                            <div class="cell money">
-                                <i class="fa fa-money"></i>
-                                <span>我的收入</span>
-                                <h5>￥11.11</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="cell th">
-                                <i class="fa fa-th"></i>
-                                <span>课程数量</span>
-                                <h5>12</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="cell user">
-                                <i class="fa fa-user"></i>
-                                <span>用户数量</span>
-                                <h5>236</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="cell eye">
-                                <i class="fa fa-eye"></i>
-                                <span>浏览量</span>
-                                <h5>22435</h5>
-                            </div>
-                        </div>
+            <div class="body course-add">
+                <!-- 面包屑 -->
+                <ol class="breadcrumb">
+                    <li><a href="javascript:;">课程管理</a></li>
+                    <li class="active">课程添加</li>
+                </ol>
+                <div class="steps create">
+                    <div class="title">
+                        <h5>创建课程 <small>CREATE A COURSE</small></h5>
                     </div>
-                    <div class="chart">
-                        <div id="main" style="width: 600px;height:400px;"></div>
+                    <form action="" class="form-horizontal col-xs-7">
+                        <div class="form-group">
+                            <label for="" class="col-xs-2 control-label">课程标题</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control input-sm" placeholder="请填写课程标题">
+                            </div>
+                        </div>
+                        <div class="col-xs-11">
+                            <a href="add_step1.html" class="btn btn-success btn-sm pull-right">创建课程</a>
+                        </div>
+                    </form>
+                    <div class="extra col-xs-3">
+                        <h5>从视频专辑导入课程</h5>
+                        <p>已支持优酷、腾讯视频、网易公开课、爱奇艺教育的视频专辑导入。</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php include("./html/common/script.html")?>
+    <?php include("../common/script.html")?>
 </body>
 </html>
