@@ -2,10 +2,19 @@
  * Created by EP_ling on 2017/2/26.
  */
 define(["jquery","jqueryCookie"], function ($) {
+//左侧导航下拉列表
     $(".navs a").on("click", function () {
         //单击这个a标签的时候,让它下面的子元素(就是那一排li标签)下滑显示出来,切换,显示就隐藏,隐藏就显示
         $(this).next().slideToggle();
     });
+//根据浏览器页面中的路径来定位左侧导航栏
+//    1:获取到当前页面的pathname
+//    2:获取到所有的a标签,去掉它们的active属性,removeClass("active")
+//    3:根据pathname获取到对应的被选中的a标签,让这个a标签有active属性
+//    4:获取这个a标签的所有父标签,让他们显示出来
+//    5:filter是在原有的条件基础上增加的筛选的条件
+    var pathname=window.location.pathname;
+    $(".navs a").removeClass("active").filter('[href="'+pathname+'"]').addClass("active").parents("ul").show();
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //    做退出按钮的事件,因为退出按钮每个页面都有,所以就写在这个公共的common.js里
@@ -19,7 +28,7 @@ define(["jquery","jqueryCookie"], function ($) {
             }
         })
     });
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /*1:接收cookie存储的数据,我需要里面的用户名和图片*/
     //2:那边把对象改成了字符串,这里要改回来
     //3:名字当然还是自己取得那个名字

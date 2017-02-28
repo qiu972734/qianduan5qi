@@ -2,7 +2,24 @@
  * Created by EP_ling on 2017/2/25.
  */
 //该模块依赖于jquery,其实这里不写也可以,因为在main.js中,已经在(引用)加载了jquery,虽然重复引用,但不会重复加载的
-define(["jquery",'jqueryCookie'], function ($,undefined) {
+define(["jquery",'jqueryCookie','nprogress'], function ($,undefined,nprogress) {
+//展示用户的历史登录头像
+//    1:获取到cookie值,同样的是用一个变量装起来
+//    2:cookie默认是对象型的,要转为字符串
+//    3:设置登录页的img-src为接收的那个值中的tc_avatar
+//    4:用个三元表示式判断一下,要是没有的话,就默认一个对象好了,尴尬了,三元表达式不会写了,写错了
+    var userInfo=null;
+    //userInfo=JSON.parse($.cookie('userInfo'))?JSON.parse($.cookie('userInfo')):{};
+    //$(".login .avatar img").attr("src",userInfo.tc_avatar);
+    try {
+        userInfo = JSON.parse($.cookie('userInfo'))
+    }catch(e) {
+        userInfo = {};
+    }
+    $('.login .avatar img').attr('src', userInfo.tc_avatar? userInfo.tc_avatar: '/img/default.png');
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //    1:先监听form 表单的提交事件
 //    2:事件回调中的retrue false阻止默认行为
 //    3:事件回调中用ajax的方式发送表单数据
@@ -32,5 +49,6 @@ define(["jquery",'jqueryCookie'], function ($,undefined) {
             }
         });
         return false;
-    })
+    });
+    nprogress.done();
 });

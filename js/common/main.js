@@ -8,12 +8,26 @@ requirejs.config({
         jquery:"lib/jquery/jquery.min",
         bootstrap:"lib/bootstrap/js/bootstrap.min",
         jqueryCookie:"lib/jquery_cookie/jquery_cookie",
+        nprogress:"lib/nprogress/nprogress",
 
         //这是我自己的路径配置
+        common:"/js/common/common",
         userList:"/js/user/List",
         userProfile:"/js/user/Profile",
-        common:"/js/common/common",
-        homeLogin:"/js/home/login"
+        courseAdd:"/js/course/add",
+        courseAddStep1:"/js/course/add_step1",
+        courseAddStep2:"/js/course/add_step2",
+        courseAddStep3:"/js/course/add_step3",
+        courseCategory:"/js/course/category",
+        courseCategoryAdd:"/js/course/category_add",
+        courseList:"/js/course/list",
+        courseTopic:"/js/course/topic",
+        homeLogin:"/js/home/login",
+        homeRepass:"/js/home/repass",
+        homeSetting:"/js/home/setting",
+        teacherAdd:"/js/teacher/add",
+        teacherList:"/js/teacher/list",
+        index:"js/index"
     },
     shim:{
         bootstrap:{
@@ -25,8 +39,12 @@ requirejs.config({
     }
 });
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//所有的页面加载都需要先加载这两个
-require(["jquery","bootstrap","common"]);
+//优先以最快的速度开启页面进度条，其他的js加载延后
+require(["nprogress"], function (nprogress) {
+    nprogress.start();
+});
+//所有的页面加载都需要先加载这三个
+require(['jquery', 'bootstrap', 'common']);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //判断登录状态,有没有登录上
 //1:登录页,没有sessid(就是那个cookie标记),表示没有登录,正需要登录呢,就不用管,有sessid,要登录
@@ -48,7 +66,11 @@ require(["jquery","bootstrap","common"]);
 //    如果页面没有发生对应的跳转,就加载对应的模块
         switch (pathname) {
             case
-            "/html/user.list.html":
+            "/":
+                require(["index"]);
+                break;
+            case
+            "/html/user/list.html":
                 require(["userList"]);
                 break;
             case
@@ -58,6 +80,54 @@ require(["jquery","bootstrap","common"]);
             case
             "/html/home/login.html":
                 require(["homeLogin"]);
+                break;
+            case
+            "/html/course/add.html":
+                require(["courseAdd"]);
+                break;
+            case
+            "/html/course/add_step1.html":
+                require(["courseAddStep1"]);
+                break;
+            case
+            "/html/course/add_step2.html":
+                require(["courseAddStep2"]);
+                break;
+            case
+            "/html/course/add_step3.html":
+                require(["courseAddStep3"]);
+                break;
+            case
+            "/html/course/category.html":
+                require(["courseCategory"]);
+                break;
+            case
+            "/html/course/category_add.html":
+                require(["courseCategoryAdd"]);
+                break;
+            case
+            "/html/course/list.html":
+                require(["courseList"]);
+                break;
+            case
+            "/html/course/topic.html":
+                require(["courseTopic"]);
+                break;
+            case
+            "/html/home/repass.html":
+                require(["homeRepass"]);
+                break;
+            case
+            "/html/home/setting.html":
+                require(["homeSetting"]);
+                break;
+            case
+            "/html/teacher/add.html":
+                require(["teacherAdd"]);
+                break;
+            case
+            "/html/teacher/list.html":
+                require(["teacherList"]);
                 break;
         }
 })(window);
