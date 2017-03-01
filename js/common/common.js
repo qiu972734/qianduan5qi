@@ -2,6 +2,13 @@
  * Created by EP_ling on 2017/2/26.
  */
 define(["jquery","jqueryCookie"], function ($) {
+//ajax请求loading图片,分别在ajsx开始事件前和后显示出这图片和隐藏图片
+    $(document).ajaxStart(function () {
+        $(".overlay").show();
+    }).ajaxStop(function () {
+        $(".overlay").hide();
+    });
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 //左侧导航下拉列表
     $(".navs a").on("click", function () {
         //单击这个a标签的时候,让它下面的子元素(就是那一排li标签)下滑显示出来,切换,显示就隐藏,隐藏就显示

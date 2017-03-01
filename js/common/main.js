@@ -9,6 +9,7 @@ requirejs.config({
         bootstrap:"lib/bootstrap/js/bootstrap.min",
         jqueryCookie:"lib/jquery_cookie/jquery_cookie",
         nprogress:"lib/nprogress/nprogress",
+        template:"lib/artTemplate-3.0.1/template",
 
         //这是我自己的路径配置
         common:"/js/common/common",
